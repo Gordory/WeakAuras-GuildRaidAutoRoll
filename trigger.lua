@@ -17,11 +17,9 @@ function(event, ...)
         
         local rollType = aura_env.chooseRoll(rollId)
         if not rollType then
-            print("not rolling")
             return
         end
         
-        print("rolling "..rollType)
         RollOnLoot(rollId, rollType)
     elseif event == "GROUP_ROSTER_UPDATE" then
         aura_env.onRosterUpdate()
