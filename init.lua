@@ -27,6 +27,15 @@ aura_env.chooseRollForItem = function(itemId, canNeed, canGreed, canDis)
         aura_env.debug(type .." ".. quality)
     end
 
+    if quality == 0 -- poor
+    or quality == 1 -- common
+    or quality == 5 -- legendary (!) this WA will NOT auto roll legendary items
+    or quality == 6 -- artifact
+    or quality == 7 -- heirloom
+    or quality == 8 then -- wow token
+        return nil -- no roll for this quality
+    end
+
     local exceptionalRoll = aura_env.getExceptionalRoll(itemId, name)
     if exceptionalRoll then
         return aura_env.mapRoll(exceptionalRoll)
